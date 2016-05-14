@@ -32,11 +32,14 @@
             this.txtWorkingDirectory = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.lstDotfiles = new System.Windows.Forms.ListView();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnStart = new System.Windows.Forms.Button();
             this.chkDelete = new System.Windows.Forms.CheckBox();
             this.fbdDirectoryBrowse = new System.Windows.Forms.FolderBrowserDialog();
-            this.lstDotfileCollection = new System.Windows.Forms.ListBox();
             this.lblDotfileCount = new System.Windows.Forms.Label();
+            this.btnDeselectAll = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             this.pnlBrowse.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -79,11 +82,32 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.lstDotfileCollection);
+            this.pnlMain.Controls.Add(this.btnSelectAll);
+            this.pnlMain.Controls.Add(this.btnDeselectAll);
+            this.pnlMain.Controls.Add(this.lstDotfiles);
             this.pnlMain.Location = new System.Drawing.Point(12, 41);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(663, 298);
             this.pnlMain.TabIndex = 1;
+            // 
+            // lstDotfiles
+            // 
+            this.lstDotfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstDotfiles.CheckBoxes = true;
+            this.lstDotfiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName});
+            this.lstDotfiles.Location = new System.Drawing.Point(3, 32);
+            this.lstDotfiles.Name = "lstDotfiles";
+            this.lstDotfiles.Size = new System.Drawing.Size(655, 261);
+            this.lstDotfiles.TabIndex = 1;
+            this.lstDotfiles.UseCompatibleStateImageBehavior = false;
+            this.lstDotfiles.View = System.Windows.Forms.View.List;
+            // 
+            // colName
+            // 
+            this.colName.Width = 1200;
             // 
             // btnStart
             // 
@@ -110,25 +134,35 @@
             // 
             this.fbdDirectoryBrowse.Description = "Select the top level directory where you wish to look for dot files.";
             // 
-            // lstDotfileCollection
-            // 
-            this.lstDotfileCollection.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstDotfileCollection.FormattingEnabled = true;
-            this.lstDotfileCollection.Location = new System.Drawing.Point(3, 3);
-            this.lstDotfileCollection.Name = "lstDotfileCollection";
-            this.lstDotfileCollection.Size = new System.Drawing.Size(655, 290);
-            this.lstDotfileCollection.TabIndex = 0;
-            // 
             // lblDotfileCount
             // 
+            this.lblDotfileCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDotfileCount.AutoSize = true;
             this.lblDotfileCount.Location = new System.Drawing.Point(13, 349);
             this.lblDotfileCount.Name = "lblDotfileCount";
             this.lblDotfileCount.Size = new System.Drawing.Size(98, 13);
             this.lblDotfileCount.TabIndex = 4;
             this.lblDotfileCount.Text = "0 Dotfle(s) selected";
+            // 
+            // btnDeselectAll
+            // 
+            this.btnDeselectAll.Location = new System.Drawing.Point(583, 3);
+            this.btnDeselectAll.Name = "btnDeselectAll";
+            this.btnDeselectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnDeselectAll.TabIndex = 2;
+            this.btnDeselectAll.Text = "Deselect all";
+            this.btnDeselectAll.UseVisualStyleBackColor = true;
+            this.btnDeselectAll.Click += new System.EventHandler(this.btnDeselectAll_Click);
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(502, 3);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectAll.TabIndex = 3;
+            this.btnSelectAll.Text = "Select all";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // frmMain
             // 
@@ -160,8 +194,11 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.CheckBox chkDelete;
         private System.Windows.Forms.FolderBrowserDialog fbdDirectoryBrowse;
-        private System.Windows.Forms.ListBox lstDotfileCollection;
         private System.Windows.Forms.Label lblDotfileCount;
+        private System.Windows.Forms.ListView lstDotfiles;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.Button btnDeselectAll;
     }
 }
 
