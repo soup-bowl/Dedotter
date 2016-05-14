@@ -28,7 +28,7 @@ namespace Dedotter {
                 txtWorkingDirectory.Text = string.Empty;
             }
 
-            List<String> files = DirSearch(txtWorkingDirectory.Text);
+            List<ListObject> files = DirSearch(txtWorkingDirectory.Text);
 
             lstDotfiles.Items.Clear();
             List<ListViewItem> lvi = ListViewConverter(DirSearch(txtWorkingDirectory.Text));
@@ -62,12 +62,16 @@ namespace Dedotter {
         /// </summary>
         /// <param name="sDir"></param>
         /// <returns></returns>
-        protected List<String> DirSearch(string sDir) {
-            List<String> files = new List<String>();
+        protected List<ListObject> DirSearch(string sDir) {
+            List<ListObject> files = new List<ListObject>();
             try {
                 foreach (string f in Directory.GetFiles(sDir)) {
                     if (Path.GetFileName(f).Contains("._")) {
-                        files.Add(f);
+                        ListObject lstObject = new ListObject();
+                        lstObject.Name = Path.GetFileName(f);
+                        lstObject.Path = f;
+                        lstObject.VisibleFlag = File.GetAttributes(f).HasFlag(FileAttributes.Hidden);
+                        files.Add(lstObject);
                     }
                 }
                 foreach (string d in Directory.GetDirectories(sDir)) {
@@ -93,11 +97,11 @@ namespace Dedotter {
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        protected List<ListViewItem> ListViewConverter(List<string> list) {
+        protected List<ListViewItem> ListViewConverter(List<ListObject> list) {
             List<ListViewItem> entryList = new List<ListViewItem>();
-            foreach (string entry in list) {
+            foreach (ListObject entry in list) {
                 ListViewItem viewItem = new ListViewItem();
-                viewItem.Text = entry;
+                viewItem.Text = entry.Path;
                 lstDotfiles.Items.Add(viewItem);
             }
 

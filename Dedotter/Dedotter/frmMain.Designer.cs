@@ -107,6 +107,7 @@
             // 
             // colName
             // 
+            this.colName.Text = "Path";
             this.colName.Width = 1200;
             // 
             // btnStart
@@ -146,6 +147,7 @@
             // 
             // btnDeselectAll
             // 
+            this.btnDeselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeselectAll.Location = new System.Drawing.Point(583, 3);
             this.btnDeselectAll.Name = "btnDeselectAll";
             this.btnDeselectAll.Size = new System.Drawing.Size(75, 23);
@@ -156,6 +158,7 @@
             // 
             // btnSelectAll
             // 
+            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectAll.Location = new System.Drawing.Point(502, 3);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
