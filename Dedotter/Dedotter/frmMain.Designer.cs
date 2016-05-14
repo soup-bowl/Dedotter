@@ -68,6 +68,7 @@
             this.btnBrowse.TabIndex = 4;
             this.btnBrowse.Text = "Browse...";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtWorkingDirectory
             // 
@@ -94,6 +95,10 @@
             this.chkDelete.TabIndex = 3;
             this.chkDelete.Text = "Delete, don\'t hide";
             this.chkDelete.UseVisualStyleBackColor = true;
+            // 
+            // fbdDirectoryBrowse
+            // 
+            this.fbdDirectoryBrowse.Description = "Select the top level directory where you wish to look for dot files.";
             // 
             // frmMain
             // 
