@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dedotter", "Dedotter\Dedotter.csproj", "{CC754507-8DDE-4B84-8329-CB9BA0611A8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dedotter-core", "Dedotter-core\Dedotter-core.csproj", "{67776455-4381-4DBF-910D-EA02826A414F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CC754507-8DDE-4B84-8329-CB9BA0611A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC754507-8DDE-4B84-8329-CB9BA0611A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC754507-8DDE-4B84-8329-CB9BA0611A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67776455-4381-4DBF-910D-EA02826A414F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67776455-4381-4DBF-910D-EA02826A414F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67776455-4381-4DBF-910D-EA02826A414F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67776455-4381-4DBF-910D-EA02826A414F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
