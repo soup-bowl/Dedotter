@@ -32,14 +32,14 @@
             this.txtWorkingDirectory = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnSelectAll = new System.Windows.Forms.Button();
+            this.btnDeselectAll = new System.Windows.Forms.Button();
             this.lstDotfiles = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnStart = new System.Windows.Forms.Button();
             this.chkDelete = new System.Windows.Forms.CheckBox();
             this.fbdDirectoryBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.lblDotfileCount = new System.Windows.Forms.Label();
-            this.btnDeselectAll = new System.Windows.Forms.Button();
-            this.btnSelectAll = new System.Windows.Forms.Button();
             this.pnlBrowse.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +89,28 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(663, 298);
             this.pnlMain.TabIndex = 1;
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectAll.Location = new System.Drawing.Point(502, 3);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectAll.TabIndex = 3;
+            this.btnSelectAll.Text = "Select all";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
+            // btnDeselectAll
+            // 
+            this.btnDeselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeselectAll.Location = new System.Drawing.Point(583, 3);
+            this.btnDeselectAll.Name = "btnDeselectAll";
+            this.btnDeselectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnDeselectAll.TabIndex = 2;
+            this.btnDeselectAll.Text = "Deselect all";
+            this.btnDeselectAll.UseVisualStyleBackColor = true;
+            this.btnDeselectAll.Click += new System.EventHandler(this.btnDeselectAll_Click);
             // 
             // lstDotfiles
             // 
@@ -145,28 +167,6 @@
             this.lblDotfileCount.TabIndex = 4;
             this.lblDotfileCount.Text = "0 Dotfle(s) selected";
             // 
-            // btnDeselectAll
-            // 
-            this.btnDeselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeselectAll.Location = new System.Drawing.Point(583, 3);
-            this.btnDeselectAll.Name = "btnDeselectAll";
-            this.btnDeselectAll.Size = new System.Drawing.Size(75, 23);
-            this.btnDeselectAll.TabIndex = 2;
-            this.btnDeselectAll.Text = "Deselect all";
-            this.btnDeselectAll.UseVisualStyleBackColor = true;
-            this.btnDeselectAll.Click += new System.EventHandler(this.btnDeselectAll_Click);
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectAll.Location = new System.Drawing.Point(502, 3);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
-            this.btnSelectAll.TabIndex = 3;
-            this.btnSelectAll.Text = "Select all";
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +180,7 @@
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.Text = "Dedotter";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlBrowse.ResumeLayout(false);
             this.pnlBrowse.PerformLayout();
             this.pnlMain.ResumeLayout(false);

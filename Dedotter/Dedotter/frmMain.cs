@@ -99,5 +99,10 @@ namespace Dedotter {
             return lvi;
         }
 
+        private void frmMain_Load(object sender, EventArgs e) {
+            if(Security.IsAdministrator()) {
+                this.Text = this.Text + " [Administrator]";
+            }
+        }
     }
 }
