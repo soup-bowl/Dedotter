@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dedotter_core;
 using static System.Windows.Forms.ListView;
+using Dedotter_core.Models;
 
 namespace Dedotter {
     public partial class frmMain : Form {
@@ -28,10 +30,10 @@ namespace Dedotter {
                 txtWorkingDirectory.Text = string.Empty;
             }
 
-            List<ListObject> files = DirSearch(txtWorkingDirectory.Text);
+            List<Dotfiles> files = Filesystem.DirectorySearch(txtWorkingDirectory.Text);
 
             lstDotfiles.Items.Clear();
-            List<ListViewItem> lvi = ListViewConverter(DirSearch(txtWorkingDirectory.Text));
+            List<ListViewItem> lvi = ListViewConverter(Filesystem.DirectorySearch(txtWorkingDirectory.Text));
             foreach (ListViewItem listview in lvi) {
                 lstDotfiles.Items.Add(listview);
             }
@@ -58,33 +60,6 @@ namespace Dedotter {
         }
 
         /// <summary>
-        /// Recursively checks a chosen directory for dotfiles.
-        /// </summary>
-        /// <param name="sDir"></param>
-        /// <returns></returns>
-        protected List<ListObject> DirSearch(string sDir) {
-            List<ListObject> files = new List<ListObject>();
-            try {
-                foreach (string f in Directory.GetFiles(sDir)) {
-                    if (Path.GetFileName(f).Contains("._")) {
-                        ListObject lstObject = new ListObject();
-                        lstObject.Name = Path.GetFileName(f);
-                        lstObject.Path = f;
-                        lstObject.VisibleFlag = File.GetAttributes(f).HasFlag(FileAttributes.Hidden);
-                        files.Add(lstObject);
-                    }
-                }
-                foreach (string d in Directory.GetDirectories(sDir)) {
-                    files.AddRange(DirSearch(d));
-                }
-            } catch (System.Exception excpt) {
-                MessageBox.Show(excpt.Message);
-            }
-
-            return files;
-        }
-
-        /// <summary>
         /// Updates the dot file counter on the main form.
         /// </summary>
         /// <param name="count"></param>
@@ -97,9 +72,9 @@ namespace Dedotter {
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        protected List<ListViewItem> ListViewConverter(List<ListObject> list) {
+        protected List<ListViewItem> ListViewConverter(List<Dotfiles> list) {
             List<ListViewItem> entryList = new List<ListViewItem>();
-            foreach (ListObject entry in list) {
+            foreach (Dotfiles entry in list) {
                 ListViewItem viewItem = new ListViewItem();
                 viewItem.Text = entry.Path;
                 lstDotfiles.Items.Add(viewItem);
