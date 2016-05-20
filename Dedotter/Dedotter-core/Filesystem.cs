@@ -13,7 +13,7 @@ namespace Dedotter_core {
         /// </summary>
         /// <param name="dir"></param>
         /// <returns></returns>
-        public static List<Dotfiles> DirectorySearch(string sDir) {
+        public static List<Dotfiles> DirectorySearch(string sDir, bool logging = false) {
             // Credit goes to this SO answer http://stackoverflow.com/a/14305616
             List<Dotfiles> files = new List<Dotfiles>();
             try {
@@ -33,10 +33,64 @@ namespace Dedotter_core {
                     files.AddRange(DirectorySearch(d));
                 }
             } catch (System.Exception excpt) {
-                //MessageBox.Show(excpt.Message);
+                if(logging == true) {
+                    CacheWriter("An error occured: " + excpt.Message);
+                }
             }
 
             return files;
+        }
+
+
+        /// <summary>
+        /// Writes to the dedotter log.
+        /// </summary>
+        /// <param name="message"></param>
+        public static void CacheWriter(string message) {
+            string logfile = Path.Combine(Path.GetTempPath(), "dedotter-dir.log");
+            using (StreamWriter writelog = new StreamWriter(logfile)) {
+                writelog.WriteLine(message);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the log file.
+        /// </summary>
+        public static void CacheDelete() {
+            if (Filesystem.CacheExists()) {
+                File.Delete(Path.Combine(Path.GetTempPath(), "dedotter-dir.log"));
+            }
+        }
+
+        /// <summary>
+        /// Counts the errors in the log and outputs the count.
+        /// </summary>
+        /// <returns></returns>
+        public static int CacheCount() {
+            if (Filesystem.CacheExists()) {
+                using (StreamReader readlog = new StreamReader(Path.Combine(Path.GetTempPath(), "dedotter-dir.log"))) {
+                    int i = 0;
+                    while (readlog.ReadLine() != null) {
+                        i++;
+                    }
+
+                    return i;
+                }
+            } else {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the cache exists.
+        /// </summary>
+        /// <returns></returns>
+        public static bool CacheExists() {
+            if (File.Exists(Path.Combine(Path.GetTempPath(), "dedotter-dir.log"))) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

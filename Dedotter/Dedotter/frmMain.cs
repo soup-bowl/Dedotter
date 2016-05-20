@@ -31,9 +31,10 @@ namespace Dedotter {
             }
 
             List<Dotfiles> files = Filesystem.DirectorySearch(txtWorkingDirectory.Text);
+            int count = Filesystem.CacheCount();
 
             lstDotfiles.Items.Clear();
-            List<ListViewItem> lvi = ListViewConverter(Filesystem.DirectorySearch(txtWorkingDirectory.Text));
+            List<ListViewItem> lvi = ListViewConverter(Filesystem.DirectorySearch(txtWorkingDirectory.Text, true));
             foreach (ListViewItem listview in lvi) {
                 lstDotfiles.Items.Add(listview);
             }
